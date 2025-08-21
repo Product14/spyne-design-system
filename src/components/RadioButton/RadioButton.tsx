@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import './RadioButton.css';
 
-export interface RadioButtonProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface RadioButtonProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /**
    * The label text for the radio button
    */

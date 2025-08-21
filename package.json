@@ -1,6 +1,7 @@
 {
   "name": "@spyne/design-system",
   "version": "0.1.0",
+  "type": "module",
   "description": "A comprehensive design system for Spyne",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -18,7 +19,9 @@
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "type-check": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "design-system",

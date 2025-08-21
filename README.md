@@ -14,6 +14,24 @@ A comprehensive React design system built with TypeScript, providing reusable co
 
 ## Installation
 
+### From Git Repository (Recommended for Development)
+
+```bash
+# Install directly from Git repository
+npm install git+https://github.com/spyne/design-system.git
+# or
+yarn add git+https://github.com/spyne/design-system.git
+# or  
+pnpm add git+https://github.com/spyne/design-system.git
+
+# Install from specific branch
+npm install git+https://github.com/spyne/design-system.git#main
+# or
+npm install git+https://github.com/spyne/design-system.git#develop
+```
+
+### From NPM (When Published)
+
 ```bash
 npm install @spyne/design-system
 # or
@@ -185,6 +203,55 @@ spacing[1]  // 4px
 spacing[4]  // 16px
 spacing[8]  // 32px
 ```
+
+## Git Repository Setup
+
+### Prerequisites
+
+1. **Create a Git repository** for your design system:
+   ```bash
+   # Initialize Git repository
+   git init
+   git add .
+   git commit -m "Initial commit"
+   
+   # Add remote repository (replace with your actual repository URL)
+   git remote add origin https://github.com/spyne/design-system.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+2. **Build the library** before committing:
+   ```bash
+   npm run build
+   git add dist/
+   git commit -m "Add built files"
+   git push
+   ```
+
+### Installing from Git
+
+Once your repository is set up, others can install your design system directly from Git:
+
+```bash
+# Install from main branch
+npm install git+https://github.com/YOUR_USERNAME/YOUR_REPO.git
+
+# Install from specific branch  
+npm install git+https://github.com/YOUR_USERNAME/YOUR_REPO.git#branch-name
+
+# Install from specific commit
+npm install git+https://github.com/YOUR_USERNAME/YOUR_REPO.git#commit-hash
+```
+
+### Development Workflow
+
+1. **Make changes** to components
+2. **Test locally** with Storybook: `npm run storybook`
+3. **Build the library**: `npm run build`
+4. **Commit changes** including the `dist/` folder
+5. **Push to repository**
+6. **Update consuming projects** by reinstalling from Git
 
 ## Publishing
 

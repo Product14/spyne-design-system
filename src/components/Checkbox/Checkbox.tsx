@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import './Checkbox.css';
 
-export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   /**
    * The label text for the checkbox
    */

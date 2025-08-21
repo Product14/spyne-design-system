@@ -1,0 +1,54 @@
+export declare const spacing: {
+    readonly 0: "0px";
+    readonly 1: "0.25rem";
+    readonly 2: "0.5rem";
+    readonly 3: "0.75rem";
+    readonly 4: "1rem";
+    readonly 5: "1.25rem";
+    readonly 6: "1.5rem";
+    readonly 7: "1.75rem";
+    readonly 8: "2rem";
+    readonly 10: "2.5rem";
+    readonly 12: "3rem";
+    readonly 16: "4rem";
+    readonly 20: "5rem";
+    readonly 24: "6rem";
+    readonly buttonSmall: "0.75rem";
+    readonly buttonMedium: "0.875rem";
+    readonly buttonLarge: "1rem";
+    readonly pageHorizontal: "3rem";
+    readonly pageVertical: "2rem";
+};
+export declare const iconSizes: {
+    readonly small: "1rem";
+    readonly medium: "1.25rem";
+    readonly large: "1.5rem";
+};
+export declare const borderRadius: {
+    readonly none: "0px";
+    readonly sm: "0.25rem";
+    readonly md: "0.375rem";
+    readonly lg: "0.5rem";
+    readonly xl: "0.75rem";
+    readonly full: "9999px";
+    readonly button: "0.5rem";
+    readonly input: "0.375rem";
+    readonly card: "0.5rem";
+    readonly modal: "0.75rem";
+    readonly chip: "9999px";
+    readonly avatar: "9999px";
+};
+export declare const shadows: {
+    readonly none: "none";
+    readonly sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)";
+    readonly base: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)";
+    readonly md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)";
+    readonly lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)";
+    readonly xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)";
+    readonly '2xl': "0 25px 50px -12px rgb(0 0 0 / 0.25)";
+    readonly inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)";
+};
+export type Spacing = keyof typeof spacing;
+export type BorderRadius = keyof typeof borderRadius;
+export type Shadow = keyof typeof shadows;
+export type IconSize = keyof typeof iconSizes;

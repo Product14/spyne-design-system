@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Font Size Test</title>
+    <link rel="stylesheet" href="dist/index.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+            background-color: #f4f5f8;
+        }
+        .test-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 400px;
+        }
+        .size-info {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input Font Size Test</h1>
+    
+    <div class="test-container">
+        <div>
+            <div class="size-info">Small Input (should be 12px font)</div>
+            <div class="input-wrapper">
+                <div class="input-container">
+                    <input class="input input--sm" placeholder=" " value="Small input text - 12px">
+                    <label class="input-label">Small Input</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="size-info">Medium Input (should be 14px font)</div>
+            <div class="input-wrapper">
+                <div class="input-container">
+                    <input class="input input--md" placeholder=" " value="Medium input text - 14px">
+                    <label class="input-label">Medium Input</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="size-info">Large Input (should be 16px font)</div>
+            <div class="input-wrapper">
+                <div class="input-container">
+                    <input class="input input--lg" placeholder=" " value="Large input text - 16px">
+                    <label class="input-label">Large Input</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log actual computed font sizes to console
+        setTimeout(() => {
+            const inputs = document.querySelectorAll('.input');
+            inputs.forEach((input, index) => {
+                const computedStyle = window.getComputedStyle(input);
+                const fontSize = computedStyle.fontSize;
+                const sizeClass = input.classList.contains('input--sm') ? 'sm' : 
+                                 input.classList.contains('input--md') ? 'md' : 'lg';
+                console.log(`Input ${sizeClass}: computed font-size = ${fontSize}`);
+            });
+        }, 100);
+    </script>
+</body>
+</html>

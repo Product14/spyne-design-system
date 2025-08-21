@@ -38,7 +38,6 @@
   border-radius: 0.5rem; /* 8px - More rounded like the image */
   background-color: #FFFFFF; /* Surface color */
   font-family: 'Inter', sans-serif;
-  font-size: 0.875rem; /* 14px - Body text */
   line-height: 1.5;
   color: #1A1A1A; /* Text Primary */
   transition: all 0.2s ease-in-out;
@@ -63,21 +62,21 @@
 /* Size variants - following design system */
 .input--sm {
   padding: 0.5rem 0.75rem; /* 8px top/bottom, 12px left/right */
-  font-size: 0.75rem; /* 12px - Small text */
+  font-size: 0.75rem !important; /* 12px */
   line-height: 1.5;
   height: 2rem; /* 32px - Adjusted for 8px padding */
 }
 
 .input--md {
   padding: 0.5rem 0.875rem; /* 8px top/bottom, 14px left/right */
-  font-size: 0.875rem; /* 14px - Body text */
-  line-height: 1.5;
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.25;
   height: 2.25rem; /* 36px - Adjusted for 8px padding */
 }
 
 .input--lg {
   padding: 0.75rem 1rem; /* 12px top/bottom, 16px left/right */
-  font-size: 1rem; /* 16px - Button large font */
+  font-size: 1rem !important; /* 16px */
   line-height: 1.5;
   height: 2.75rem; /* 44px - Adjusted for 12px padding */
 }

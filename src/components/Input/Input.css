@@ -11,16 +11,34 @@
   left: 0.875rem; /* Align with input padding */
   font-family: 'Inter', sans-serif;
   font-weight: 400; /* Regular */
-  color: #6B7280; /* Text Secondary - placeholder color */
+  color: rgba(26, 26, 26, 0.4); /* 40% black - placeholder color */
   line-height: 1;
   pointer-events: none; /* Don't interfere with input clicks */
   transition: all 0.2s ease-in-out; /* Smooth animation */
-  z-index: 1; /* Above the border */
+  z-index: 2; /* Above the border and icons */
   
   /* Default state - acts as placeholder */
   top: 50%;
   transform: translateY(-50%);
   font-size: 0.875rem; /* 14px - same as input text */
+}
+
+/* Label positioning with start icon */
+.input--with-start-icon ~ .input-label {
+  left: 2.5rem; /* Position after the start icon */
+}
+
+/* Label positioning with start icon - size variants */
+.input--with-start-icon.input--sm ~ .input-label {
+  left: 2.5rem;
+}
+
+.input--with-start-icon.input--md ~ .input-label {
+  left: 2.5rem;
+}
+
+.input--with-start-icon.input--lg ~ .input-label {
+  left: 2.75rem;
 }
 
 /* Input container */
@@ -55,8 +73,18 @@
   cursor: not-allowed;
 }
 
+/* Disabled input label - no floating, stays as placeholder */
+.input:disabled ~ .input-label {
+  color: rgba(26, 26, 26, 0.4); /* 40% black */
+  top: 50%; /* Keep as placeholder position */
+  transform: translateY(-50%);
+  font-size: 0.875rem; /* Keep normal size */
+  background-color: transparent; /* No background */
+  padding: 0; /* No padding */
+}
+
 .input::placeholder {
-  color: #6B7280; /* Text Secondary */
+  color: rgba(26, 26, 26, 0.4); /* 40% black */
 }
 
 /* Size variants - following design system */
@@ -83,13 +111,20 @@
 
 /* Variant styles */
 .input--filled {
-  background-color: #F4F5F8; /* Background color */
+  background-color: #FFFFFF; /* White background */
   border-color: #E5E7EB; /* Keep subtle border */
+  color: #1A1A1A; /* Black text */
 }
 
 .input--filled:focus {
-  background-color: #FFFFFF; /* Surface color */
+  background-color: #FFFFFF; /* Keep white background */
   border-color: #4600F2; /* Primary color */
+  color: #1A1A1A; /* Keep black text */
+}
+
+/* Ensure filled variant text is always black */
+.input--filled:not(:placeholder-shown) {
+  color: #1A1A1A; /* Black text when filled */
 }
 
 /* Error state */
@@ -102,20 +137,25 @@
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
+/* Error icon styling */
+.input-icon--error {
+  color: #EF4444; /* Error color */
+}
+
 /* Icon styles */
 .input-icon {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6B7280; /* Text Secondary */
+  color: rgba(26, 26, 26, 0.4); /* 40% black */
   pointer-events: none;
   z-index: 1;
 }
 
 .input-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1rem; /* Smaller icons - 16px */
+  height: 1rem; /* Smaller icons - 16px */
 }
 
 .input-icon--start {
@@ -164,15 +204,32 @@
   color: #EF4444; /* Error color */
 }
 
-/* Floating label when focused or filled */
-.input:focus ~ .input-label,
-.input:not(:placeholder-shown) ~ .input-label {
+/* Floating label when focused only */
+.input:focus ~ .input-label {
   top: -0.5rem; /* Float to top, cutting through border */
   transform: translateY(0);
   font-size: 0.75rem; /* 12px - smaller when floating */
-  color: #4600F2; /* Primary color when focused or filled */
+  color: #4600F2; /* Primary color when focused */
   background-color: #FFFFFF; /* White background to cut through border */
   padding: 0 0.25rem; /* Small padding around text */
+  left: 0.875rem; /* Reset to default position when floating */
+}
+
+/* Floating label when filled but not focused - 40% black */
+.input:not(:focus):not(:placeholder-shown) ~ .input-label {
+  top: -0.5rem; /* Float to top, cutting through border */
+  transform: translateY(0);
+  font-size: 0.75rem; /* 12px - smaller when floating */
+  color: rgba(26, 26, 26, 0.4); /* 40% black when unfocused */
+  background-color: #FFFFFF; /* White background to cut through border */
+  padding: 0 0.25rem; /* Small padding around text */
+  left: 0.875rem; /* Reset to default position when floating */
+}
+
+/* Floating label positioning with start icon */
+.input--with-start-icon:focus ~ .input-label,
+.input--with-start-icon:not(:focus):not(:placeholder-shown) ~ .input-label {
+  left: 0.875rem; /* Reset to default position when floating, not after icon */
 }
 
 /* Filled state - text in input should be darker */
@@ -180,7 +237,7 @@
   color: rgba(26, 26, 26, 0.8); /* 80% black as requested */
 }
 
-/* Error state for label */
+/* Error state for label - default state */
 .input-wrapper:has(.input--error) .input-label {
   color: #EF4444; /* Error color */
 }
@@ -190,8 +247,12 @@
   color: #EF4444; /* Error color */
 }
 
-/* Error state floating label */
-.input--error:focus ~ .input-label,
-.input--error:not(:placeholder-shown) ~ .input-label {
-  color: #EF4444; /* Keep error color when floating */
+/* Error state floating label when focused */
+.input--error:focus ~ .input-label {
+  color: #EF4444; /* Keep error color when focused */
+}
+
+/* Error state floating label when filled but not focused */
+.input--error:not(:focus):not(:placeholder-shown) ~ .input-label {
+  color: #EF4444; /* Keep error color when unfocused but filled */
 }

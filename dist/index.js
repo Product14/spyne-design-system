@@ -508,13 +508,27 @@ const MaterialSymbols = {
     // File & Folder
     Folder: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" }) })),
     Description: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" }) })),
+    // User & Authentication
+    Person: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" }) })),
+    Lock: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM15.1 8H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z" }) })),
+    LockOpen: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z" }) })),
+    // Status & Alerts
+    Error: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" }) })),
+    Warning: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" }) })),
+    Info: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" }) })),
+    Success: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" }) })),
+    // Input specific icons
+    Phone: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" }) })),
+    Calendar: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" }) })),
+    LocationOn: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" }) })),
 };
 // Export individual icons for easier importing
-const { Add, Remove, Close, Check, ChevronRight, ChevronLeft, ExpandMore, ExpandLess, Download, Upload, Search, Email, Visibility, VisibilityOff, MoreVert, Settings, Refresh, Home, Dashboard, Analytics, Folder, Description, } = MaterialSymbols;
+const { Add, Remove, Close, Check, ChevronRight, ChevronLeft, ExpandMore, ExpandLess, Download, Upload, Search, Email, Visibility, VisibilityOff, MoreVert, Settings, Refresh, Home, Dashboard, Analytics, Folder, Description, Person, Lock, LockOpen, Error, Warning, Info, Success, Phone, Calendar, LocationOn, } = MaterialSymbols;
 
 exports.Add = Add;
 exports.Analytics = Analytics;
 exports.Button = Button;
+exports.Calendar = Calendar;
 exports.Check = Check;
 exports.Checkbox = Checkbox;
 exports.ChevronLeft = ChevronLeft;
@@ -525,24 +539,33 @@ exports.Description = Description;
 exports.Download = Download;
 exports.Dropdown = Dropdown;
 exports.Email = Email;
+exports.Error = Error;
 exports.ExpandLess = ExpandLess;
 exports.ExpandMore = ExpandMore;
 exports.Folder = Folder;
 exports.Home = Home;
+exports.Info = Info;
 exports.Input = Input;
+exports.LocationOn = LocationOn;
+exports.Lock = Lock;
+exports.LockOpen = LockOpen;
 exports.MaterialSymbols = MaterialSymbols;
 exports.MoreVert = MoreVert;
+exports.Person = Person;
+exports.Phone = Phone;
 exports.RadioButton = RadioButton;
 exports.Refresh = Refresh;
 exports.Remove = Remove;
 exports.Search = Search;
 exports.Settings = Settings;
+exports.Success = Success;
 exports.TabPanel = TabPanel;
 exports.Tabs = Tabs;
 exports.Tooltip = Tooltip;
 exports.Upload = Upload;
 exports.Visibility = Visibility;
 exports.VisibilityOff = VisibilityOff;
+exports.Warning = Warning;
 exports.borderRadius = borderRadius;
 exports.colors = colors;
 exports.iconSizes = iconSizes;

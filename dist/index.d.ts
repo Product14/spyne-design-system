@@ -433,6 +433,16 @@ declare const MaterialSymbols: {
     Analytics: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
     Folder: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
     Description: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Person: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Lock: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    LockOpen: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Error: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Warning: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Info: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Success: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Phone: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    Calendar: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+    LocationOn: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 };
 declare const Add: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 declare const Remove: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
@@ -456,6 +466,16 @@ declare const Dashboard: ({ className, size, style }: IconProps) => react_jsx_ru
 declare const Analytics: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 declare const Folder: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 declare const Description: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Person: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Lock: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const LockOpen: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Error: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Warning: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Info: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Success: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Phone: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const Calendar: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
+declare const LocationOn: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 
-export { Add, Analytics, Button, Check, Checkbox, ChevronLeft, ChevronRight, Close, Dashboard, Description, Download, Dropdown, Email, ExpandLess, ExpandMore, Folder, Home, Input, MaterialSymbols, MoreVert, RadioButton, Refresh, Remove, Search, Settings, TabPanel, Tabs, Tooltip, Upload, Visibility, VisibilityOff, borderRadius, colors, iconSizes, shadows, spacing, typography };
+export { Add, Analytics, Button, Calendar, Check, Checkbox, ChevronLeft, ChevronRight, Close, Dashboard, Description, Download, Dropdown, Email, Error, ExpandLess, ExpandMore, Folder, Home, Info, Input, LocationOn, Lock, LockOpen, MaterialSymbols, MoreVert, Person, Phone, RadioButton, Refresh, Remove, Search, Settings, Success, TabPanel, Tabs, Tooltip, Upload, Visibility, VisibilityOff, Warning, borderRadius, colors, iconSizes, shadows, spacing, typography };
 export type { BorderRadius, ButtonProps, CheckboxProps, ColorShade, ColorToken, DropdownOption, DropdownProps, FontFamily, FontSize, FontWeight, IconProps, IconSize, InputProps, LetterSpacing, LineHeight, RadioButtonProps, Shadow, Spacing, TabItem, TabPanelProps, TabsProps, TooltipProps };

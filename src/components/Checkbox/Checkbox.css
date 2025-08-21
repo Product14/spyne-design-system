@@ -1,0 +1,166 @@
+/* Checkbox Wrapper */
+.checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px - spacing between checkbox and label */
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.checkbox-wrapper--disabled {
+  cursor: not-allowed;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hidden Native Input */
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 1;
+}
+
+.checkbox-input:disabled {
+  cursor: not-allowed;
+}
+
+/* Custom Checkbox Indicator */
+.checkbox-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #E5E7EB; /* Border color */
+  border-radius: 0.25rem; /* 4px - small border radius for square shape */
+  background-color: #FFFFFF; /* Surface color */
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+/* Checkbox Checkmark */
+.checkbox-checkmark {
+  color: #FFFFFF; /* White checkmark */
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+/* Size Variants */
+.checkbox-wrapper--sm .checkbox-indicator {
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
+  padding: 0.125rem; /* 2px padding to prevent clipping */
+}
+
+.checkbox-wrapper--sm .checkbox-checkmark {
+  width: 0.875rem; /* 14px - slightly larger */
+  height: 0.875rem; /* 14px */
+}
+
+.checkbox-wrapper--md .checkbox-indicator {
+  width: 1.25rem; /* 20px */
+  height: 1.25rem; /* 20px */
+  padding: 0.125rem; /* 2px padding to prevent clipping */
+}
+
+.checkbox-wrapper--md .checkbox-checkmark {
+  width: 1.125rem; /* 18px - slightly larger */
+  height: 1.125rem; /* 18px */
+}
+
+.checkbox-wrapper--lg .checkbox-indicator {
+  width: 1.5rem; /* 24px */
+  height: 1.5rem; /* 24px */
+  padding: 0.1875rem; /* 3px padding to prevent clipping */
+}
+
+.checkbox-wrapper--lg .checkbox-checkmark {
+  width: 1.375rem; /* 22px - slightly larger */
+  height: 1.375rem; /* 22px */
+}
+
+/* Label */
+.checkbox-label {
+  font-size: 0.875rem; /* 14px - Body text */
+  font-weight: 400; /* Regular */
+  line-height: 1.5;
+  color: #1A1A1A; /* Text Primary */
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Checked State */
+.checkbox-input:checked + .checkbox-indicator {
+  border-color: #4600F2; /* Primary color */
+  background-color: #4600F2; /* Primary background when checked */
+}
+
+.checkbox-input:checked + .checkbox-indicator .checkbox-checkmark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover State (not disabled) */
+.checkbox-wrapper:not(.checkbox-wrapper--disabled):hover .checkbox-indicator {
+  border-color: #4600F2; /* Primary color on hover */
+  background-color: #F4F5F8; /* Background color on hover */
+}
+
+.checkbox-wrapper:not(.checkbox-wrapper--disabled):hover .checkbox-input:checked + .checkbox-indicator {
+  background-color: #4600F2; /* Keep primary background when checked and hovered */
+}
+
+/* Focus State */
+.checkbox-input:focus + .checkbox-indicator {
+  outline: 2px solid #4600F214; /* Secondary color - 8% primary */
+  outline-offset: 2px;
+}
+
+/* Error State */
+.checkbox-wrapper--error .checkbox-indicator {
+  border-color: #EF4444; /* Error color */
+}
+
+.checkbox-wrapper--error .checkbox-input:checked + .checkbox-indicator {
+  background-color: #EF4444; /* Error color background when checked */
+  border-color: #EF4444;
+}
+
+.checkbox-wrapper--error:not(.checkbox-wrapper--disabled):hover .checkbox-indicator {
+  border-color: #EF4444; /* Keep error color on hover */
+}
+
+.checkbox-wrapper--error .checkbox-label {
+  color: #EF4444; /* Error color for label */
+}
+
+/* Disabled State */
+.checkbox-wrapper--disabled .checkbox-indicator {
+  border-color: #D1D5DB; /* Lighter border when disabled */
+  background-color: #F9FAFB; /* Light gray background */
+}
+
+.checkbox-wrapper--disabled .checkbox-input:checked + .checkbox-indicator {
+  border-color: #D1D5DB;
+  background-color: #9CA3AF; /* Muted gray for disabled checked state */
+}
+
+.checkbox-wrapper--disabled .checkbox-label {
+  color: #9CA3AF; /* Muted text color */
+}
+
+/* Remove default focus outline */
+.checkbox-input:focus {
+  outline: none;
+}

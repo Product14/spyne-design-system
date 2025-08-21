@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import { Download, ChevronRight, Check } from '../../icons';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -115,47 +116,27 @@ export const FullWidth: Story = {
 export const WithIcons: Story = {
   args: {
     children: 'Download',
-    leftIcon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-      </svg>
-    ),
+    leftIcon: <Download />,
   },
 };
 
 export const WithRightIcon: Story = {
   args: {
     children: 'Next',
-    rightIcon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-      </svg>
-    ),
+    rightIcon: <ChevronRight />,
   },
 };
 
 export const IconSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button size="sm" leftIcon={
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      }>
+      <Button size="sm" leftIcon={<Check />}>
         Small (16px)
       </Button>
-      <Button size="md" leftIcon={
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      }>
+      <Button size="md" leftIcon={<Check />}>
         Medium (20px)
       </Button>
-      <Button size="lg" leftIcon={
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      }>
+      <Button size="lg" leftIcon={<Check />}>
         Large (24px)
       </Button>
     </div>

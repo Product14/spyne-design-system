@@ -1,4 +1,4 @@
-# Your Company Design System
+# Spyne Design System
 
 A comprehensive React design system built with TypeScript, providing reusable components, design tokens, and utilities for building consistent user interfaces.
 
@@ -15,11 +15,11 @@ A comprehensive React design system built with TypeScript, providing reusable co
 ## Installation
 
 ```bash
-npm install @your-company/design-system
+npm install @spyne/design-system
 # or
-yarn add @your-company/design-system
+yarn add @spyne/design-system
 # or
-pnpm add @your-company/design-system
+pnpm add @spyne/design-system
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ pnpm add @your-company/design-system
 ### Components
 
 ```tsx
-import { Button, Input, Card } from '@your-company/design-system';
+import { Button, Input, Card } from '@spyne/design-system';
 
 function App() {
   return (
@@ -42,7 +42,7 @@ function App() {
 ### Design Tokens
 
 ```tsx
-import { colors, typography, spacing } from '@your-company/design-system';
+import { colors, typography, spacing } from '@spyne/design-system';
 
 const customStyles = {
   backgroundColor: colors.primary[500],
@@ -190,10 +190,9 @@ spacing[8]  // 32px
 
 Before publishing, make sure to:
 
-1. Update the package name in `package.json`
-2. Update the repository URLs
-3. Update this README with your actual package name
-4. Set up your npm registry authentication
+1. Set up your npm registry authentication
+2. Ensure you have publishing rights to the @spyne organization on npm
+3. Test the package locally
 
 ```bash
 # Build the package

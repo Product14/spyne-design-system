@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import './Input.css';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
    * The size of the input
    */
@@ -74,38 +74,39 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       .filter(Boolean)
       .join(' ');
 
-    return (
-      <div className="input-wrapper">
+      return (
+    <div className="input-wrapper">
+      <div className="input-container">
+        {startIcon && (
+          <div className="input-icon input-icon--start">
+            {startIcon}
+          </div>
+        )}
+        <input
+          ref={ref}
+          id={inputId}
+          className={inputClasses}
+          placeholder={label ? " " : props.placeholder} // Use space when label exists to trigger :not(:placeholder-shown)
+          {...(label ? { ...props, placeholder: " " } : props)} // Remove placeholder when label exists
+        />
+        {endIcon && (
+          <div className="input-icon input-icon--end">
+            {endIcon}
+          </div>
+        )}
         {label && (
           <label htmlFor={inputId} className="input-label">
             {label}
           </label>
         )}
-        <div className="input-container">
-          {startIcon && (
-            <div className="input-icon input-icon--start">
-              {startIcon}
-            </div>
-          )}
-          <input
-            ref={ref}
-            id={inputId}
-            className={inputClasses}
-            {...props}
-          />
-          {endIcon && (
-            <div className="input-icon input-icon--end">
-              {endIcon}
-            </div>
-          )}
-        </div>
-        {(helperText || errorMessage) && (
-          <div className={`input-help ${error ? 'input-help--error' : ''}`}>
-            {error && errorMessage ? errorMessage : helperText}
-          </div>
-        )}
       </div>
-    );
+      {(helperText || errorMessage) && (
+        <div className={`input-help ${error ? 'input-help--error' : ''}`}>
+          {error && errorMessage ? errorMessage : helperText}
+        </div>
+      )}
+    </div>
+  );
   }
 );
 

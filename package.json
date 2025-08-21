@@ -1,7 +1,7 @@
 {
-  "name": "@your-company/design-system",
+  "name": "@spyne/design-system",
   "version": "0.1.0",
-  "description": "A comprehensive design system for your company",
+  "description": "A comprehensive design system for Spyne",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     "ui",
     "typescript"
   ],
-  "author": "Your Company",
+  "author": "Spyne",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -74,10 +74,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-company/design-system.git"
+    "url": "https://github.com/spyne/design-system.git"
   },
   "bugs": {
-    "url": "https://github.com/your-company/design-system/issues"
+    "url": "https://github.com/spyne/design-system/issues"
   },
-  "homepage": "https://github.com/your-company/design-system#readme"
+  "homepage": "https://github.com/spyne/design-system#readme"
 }

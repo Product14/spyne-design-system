@@ -188,6 +188,46 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 
+interface ChipProps extends React.HTMLAttributes<HTMLDivElement> {
+    /**
+     * The variant/color of the chip
+     */
+    variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'neutral';
+    /**
+     * The size of the chip
+     */
+    size?: 'sm' | 'md' | 'lg';
+    /**
+     * Whether the chip can be dismissed/removed
+     */
+    dismissible?: boolean;
+    /**
+     * Whether the chip is disabled
+     */
+    disabled?: boolean;
+    /**
+     * Icon to display before the chip text
+     */
+    leftIcon?: React.ReactNode;
+    /**
+     * Icon to display after the chip text (overridden by close icon if dismissible)
+     */
+    rightIcon?: React.ReactNode;
+    /**
+     * Callback fired when the chip is dismissed
+     */
+    onDismiss?: () => void;
+    /**
+     * Whether the chip is selected (for filter chips)
+     */
+    selected?: boolean;
+    /**
+     * Whether the chip is clickable
+     */
+    clickable?: boolean;
+}
+declare const Chip: React.ForwardRefExoticComponent<ChipProps & React.RefAttributes<HTMLDivElement>>;
+
 interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
     /**
      * The size of the input
@@ -477,5 +517,5 @@ declare const Phone: ({ className, size, style }: IconProps) => react_jsx_runtim
 declare const Calendar: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 declare const LocationOn: ({ className, size, style }: IconProps) => react_jsx_runtime.JSX.Element;
 
-export { Add, Analytics, Button, Calendar, Check, Checkbox, ChevronLeft, ChevronRight, Close, Dashboard, Description, Download, Dropdown, Email, Error, ExpandLess, ExpandMore, Folder, Home, Info, Input, LocationOn, Lock, LockOpen, MaterialSymbols, MoreVert, Person, Phone, RadioButton, Refresh, Remove, Search, Settings, Success, TabPanel, Tabs, Tooltip, Upload, Visibility, VisibilityOff, Warning, borderRadius, colors, iconSizes, shadows, spacing, typography };
-export type { BorderRadius, ButtonProps, CheckboxProps, ColorShade, ColorToken, DropdownOption, DropdownProps, FontFamily, FontSize, FontWeight, IconProps, IconSize, InputProps, LetterSpacing, LineHeight, RadioButtonProps, Shadow, Spacing, TabItem, TabPanelProps, TabsProps, TooltipProps };
+export { Add, Analytics, Button, Calendar, Check, Checkbox, ChevronLeft, ChevronRight, Chip, Close, Dashboard, Description, Download, Dropdown, Email, Error, ExpandLess, ExpandMore, Folder, Home, Info, Input, LocationOn, Lock, LockOpen, MaterialSymbols, MoreVert, Person, Phone, RadioButton, Refresh, Remove, Search, Settings, Success, TabPanel, Tabs, Tooltip, Upload, Visibility, VisibilityOff, Warning, borderRadius, colors, iconSizes, shadows, spacing, typography };
+export type { BorderRadius, ButtonProps, CheckboxProps, ChipProps, ColorShade, ColorToken, DropdownOption, DropdownProps, FontFamily, FontSize, FontWeight, IconProps, IconSize, InputProps, LetterSpacing, LineHeight, RadioButtonProps, Shadow, Spacing, TabItem, TabPanelProps, TabsProps, TooltipProps };

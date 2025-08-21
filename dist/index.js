@@ -1,7 +1,7 @@
 'use strict';
 
 var jsxRuntime = require('react/jsx-runtime');
-var react = require('react');
+var React = require('react');
 
 const colors = {
     // Primary color - #4600F2
@@ -175,7 +175,7 @@ const shadows = {
     inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
 };
 
-const Button = react.forwardRef(({ variant = 'primary', size = 'md', fullWidth = false, loading = false, leftIcon, rightIcon, children, className = '', disabled, ...props }, ref) => {
+const Button = React.forwardRef(({ variant = 'primary', size = 'md', fullWidth = false, loading = false, leftIcon, rightIcon, children, className = '', disabled, ...props }, ref) => {
     const baseClasses = 'btn';
     const variantClasses = `btn--${variant}`;
     const sizeClasses = `btn--${size}`;
@@ -195,7 +195,112 @@ const Button = react.forwardRef(({ variant = 'primary', size = 'md', fullWidth =
 });
 Button.displayName = 'Button';
 
-const Input = react.forwardRef(({ size = 'md', variant = 'default', error = false, label, helperText, errorMessage, startIcon, endIcon, className = '', id, ...props }, ref) => {
+// Material Symbols - Outlined style
+// These are official Material Symbols from Google's Material Design
+const MaterialSymbols = {
+    // Navigation & Actions
+    Add: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M11 13H5v-2h6V5h2v6h6v2h-6v6h-2v-6z" }) })),
+    Remove: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 13H5v-2h14v2z" }) })),
+    Close: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" }) })),
+    Check: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" }) })),
+    ChevronRight: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" }) })),
+    ChevronLeft: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" }) })),
+    ExpandMore: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" }) })),
+    ExpandLess: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z" }) })),
+    // Content & Media
+    Download: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" }) })),
+    Upload: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z" }) })),
+    Search: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("circle", { cx: "11", cy: "11", r: "8" }), jsxRuntime.jsx("path", { d: "m21 21-4.35-4.35" })] })),
+    // Communication
+    Email: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("path", { d: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" }), jsxRuntime.jsx("polyline", { points: "22,6 12,13 2,6" })] })),
+    // Security & Privacy
+    Visibility: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }), jsxRuntime.jsx("circle", { cx: "12", cy: "12", r: "3" })] })),
+    VisibilityOff: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" }), jsxRuntime.jsx("line", { x1: "1", y1: "1", x2: "23", y2: "23" })] })),
+    // Actions & Controls
+    MoreVert: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" }) })),
+    Settings: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" }) })),
+    // Loading
+    Refresh: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" }) })),
+    // Navigation
+    Home: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" }) })),
+    Dashboard: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" }) })),
+    Analytics: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" }) })),
+    // File & Folder
+    Folder: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" }) })),
+    Description: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" }) })),
+    // User & Authentication
+    Person: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" }) })),
+    Lock: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM15.1 8H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z" }) })),
+    LockOpen: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z" }) })),
+    // Status & Alerts
+    Error: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" }) })),
+    Warning: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" }) })),
+    Info: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" }) })),
+    Success: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" }) })),
+    // Input specific icons
+    Phone: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" }) })),
+    Calendar: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" }) })),
+    LocationOn: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" }) })),
+};
+// Export individual icons for easier importing
+const { Add, Remove, Close, Check, ChevronRight, ChevronLeft, ExpandMore, ExpandLess, Download, Upload, Search, Email, Visibility, VisibilityOff, MoreVert, Settings, Refresh, Home, Dashboard, Analytics, Folder, Description, Person, Lock, LockOpen, Error, Warning, Info, Success, Phone, Calendar, LocationOn, } = MaterialSymbols;
+
+const Chip = React.forwardRef(({ variant = 'neutral', size = 'md', dismissible = false, disabled = false, selected = false, clickable = false, leftIcon, rightIcon, onDismiss, children, className = '', onClick, ...props }, ref) => {
+    const baseClasses = 'chip';
+    const variantClasses = `chip--${variant}`;
+    const sizeClasses = `chip--${size}`;
+    const disabledClasses = disabled ? 'chip--disabled' : '';
+    const selectedClasses = selected ? 'chip--selected' : '';
+    const clickableClasses = (clickable || onClick) && !disabled ? 'chip--clickable' : '';
+    const dismissibleClasses = dismissible ? 'chip--dismissible' : '';
+    const classes = [
+        baseClasses,
+        variantClasses,
+        sizeClasses,
+        disabledClasses,
+        selectedClasses,
+        clickableClasses,
+        dismissibleClasses,
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+    const handleDismiss = (e) => {
+        e.stopPropagation();
+        if (!disabled && onDismiss) {
+            onDismiss();
+        }
+    };
+    const handleClick = (e) => {
+        if (!disabled && onClick) {
+            onClick(e);
+        }
+    };
+    // Determine icon size based on chip size
+    const getIconSize = () => {
+        switch (size) {
+            case 'sm':
+                return 14;
+            case 'lg':
+                return 20;
+            case 'md':
+            default:
+                return 16;
+        }
+    };
+    return (jsxRuntime.jsxs("div", { ref: ref, className: classes, onClick: handleClick, role: clickable || onClick ? 'button' : undefined, tabIndex: clickable || onClick ? 0 : undefined, "aria-disabled": disabled, ...props, children: [leftIcon && (jsxRuntime.jsx("span", { className: "chip__icon chip__icon--left", children: React.isValidElement(leftIcon)
+                    ? React.cloneElement(leftIcon, {
+                        size: getIconSize(),
+                    })
+                    : leftIcon })), children && jsxRuntime.jsx("span", { className: "chip__text", children: children }), !dismissible && rightIcon && (jsxRuntime.jsx("span", { className: "chip__icon chip__icon--right", children: React.isValidElement(rightIcon)
+                    ? React.cloneElement(rightIcon, {
+                        size: getIconSize(),
+                    })
+                    : rightIcon })), dismissible && (jsxRuntime.jsx("button", { type: "button", className: "chip__dismiss", onClick: handleDismiss, disabled: disabled, "aria-label": "Remove", children: jsxRuntime.jsx(MaterialSymbols.Close, { size: getIconSize() }) }))] }));
+});
+Chip.displayName = 'Chip';
+
+const Input = React.forwardRef(({ size = 'md', variant = 'default', error = false, label, helperText, errorMessage, startIcon, endIcon, className = '', id, ...props }, ref) => {
     const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
     const baseClasses = 'input';
     const sizeClasses = `input--${size}`;
@@ -219,10 +324,10 @@ const Input = react.forwardRef(({ size = 'md', variant = 'default', error = fals
 Input.displayName = 'Input';
 
 const Dropdown = ({ options, value, placeholder = 'Select an option', size = 'md', error = false, disabled = false, multiselect = false, onChange, label, helperText, errorMessage, className = '', id, ...props }) => {
-    const [isOpen, setIsOpen] = react.useState(false);
-    const [focusedIndex, setFocusedIndex] = react.useState(-1);
-    const dropdownRef = react.useRef(null);
-    const buttonRef = react.useRef(null);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [focusedIndex, setFocusedIndex] = React.useState(-1);
+    const dropdownRef = React.useRef(null);
+    const buttonRef = React.useRef(null);
     const dropdownId = id || `dropdown-${Math.random().toString(36).substr(2, 9)}`;
     // Handle both single and multi-select values
     const selectedValues = Array.isArray(value) ? value : (value ? [value] : []);
@@ -239,7 +344,7 @@ const Dropdown = ({ options, value, placeholder = 'Select an option', size = 'md
         return selectedOptions[0]?.label || placeholder;
     };
     // Close dropdown when clicking outside
-    react.useEffect(() => {
+    React.useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
@@ -250,7 +355,7 @@ const Dropdown = ({ options, value, placeholder = 'Select an option', size = 'md
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
     // Handle keyboard navigation
-    react.useEffect(() => {
+    React.useEffect(() => {
         const handleKeyDown = (event) => {
             if (!isOpen)
                 return;
@@ -333,13 +438,13 @@ const Dropdown = ({ options, value, placeholder = 'Select an option', size = 'md
 };
 
 const Tabs = ({ items, activeTab, size = 'md', variant = 'underline', fullWidth = false, onChange, className = '', showContent = true, }) => {
-    const [activeTabId, setActiveTabId] = react.useState(activeTab || items[0]?.id);
-    const [indicatorStyle, setIndicatorStyle] = react.useState({});
-    const tabsRef = react.useRef(null);
-    const activeTabRef = react.useRef(null);
+    const [activeTabId, setActiveTabId] = React.useState(activeTab || items[0]?.id);
+    const [indicatorStyle, setIndicatorStyle] = React.useState({});
+    const tabsRef = React.useRef(null);
+    const activeTabRef = React.useRef(null);
     const activeTabItem = items.find(item => item.id === activeTabId);
     // Update indicator position for underline variant
-    react.useEffect(() => {
+    React.useEffect(() => {
         if (variant === 'underline' && activeTabRef.current && tabsRef.current) {
             const activeTab = activeTabRef.current;
             const tabsContainer = tabsRef.current;
@@ -391,9 +496,9 @@ const TabPanel = ({ children, active = false, className = '', }) => {
 };
 
 const Tooltip = ({ content, children, placement = 'top', disabled = false, delay = 200, className = '', }) => {
-    const [isVisible, setIsVisible] = react.useState(false);
-    const [timeoutId, setTimeoutId] = react.useState(null);
-    const triggerRef = react.useRef(null);
+    const [isVisible, setIsVisible] = React.useState(false);
+    const [timeoutId, setTimeoutId] = React.useState(null);
+    const triggerRef = React.useRef(null);
     const showTooltip = () => {
         if (disabled)
             return;
@@ -412,7 +517,7 @@ const Tooltip = ({ content, children, placement = 'top', disabled = false, delay
         }
         setIsVisible(false);
     };
-    react.useEffect(() => {
+    React.useEffect(() => {
         return () => {
             if (timeoutId) {
                 clearTimeout(timeoutId);
@@ -431,7 +536,7 @@ const Tooltip = ({ content, children, placement = 'top', disabled = false, delay
 };
 Tooltip.displayName = 'Tooltip';
 
-const RadioButton = react.forwardRef(({ label, error = false, size = 'md', className = '', disabled = false, id, ...props }, ref) => {
+const RadioButton = React.forwardRef(({ label, error = false, size = 'md', className = '', disabled = false, id, ...props }, ref) => {
     const radioId = id || `radio-${Math.random().toString(36).substr(2, 9)}`;
     const wrapperClasses = [
         'radio-wrapper',
@@ -453,7 +558,7 @@ const RadioButton = react.forwardRef(({ label, error = false, size = 'md', class
 });
 RadioButton.displayName = 'RadioButton';
 
-const Checkbox = react.forwardRef(({ label, error = false, size = 'md', className = '', disabled = false, id, ...props }, ref) => {
+const Checkbox = React.forwardRef(({ label, error = false, size = 'md', className = '', disabled = false, id, ...props }, ref) => {
     const checkboxId = id || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
     const wrapperClasses = [
         'checkbox-wrapper',
@@ -475,56 +580,6 @@ const Checkbox = react.forwardRef(({ label, error = false, size = 'md', classNam
 });
 Checkbox.displayName = 'Checkbox';
 
-// Material Symbols - Outlined style
-// These are official Material Symbols from Google's Material Design
-const MaterialSymbols = {
-    // Navigation & Actions
-    Add: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M11 13H5v-2h6V5h2v6h6v2h-6v6h-2v-6z" }) })),
-    Remove: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 13H5v-2h14v2z" }) })),
-    Close: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" }) })),
-    Check: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" }) })),
-    ChevronRight: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" }) })),
-    ChevronLeft: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" }) })),
-    ExpandMore: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" }) })),
-    ExpandLess: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z" }) })),
-    // Content & Media
-    Download: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" }) })),
-    Upload: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z" }) })),
-    Search: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("circle", { cx: "11", cy: "11", r: "8" }), jsxRuntime.jsx("path", { d: "m21 21-4.35-4.35" })] })),
-    // Communication
-    Email: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("path", { d: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" }), jsxRuntime.jsx("polyline", { points: "22,6 12,13 2,6" })] })),
-    // Security & Privacy
-    Visibility: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }), jsxRuntime.jsx("circle", { cx: "12", cy: "12", r: "3" })] })),
-    VisibilityOff: ({ className, size = 24, style }) => (jsxRuntime.jsxs("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [jsxRuntime.jsx("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" }), jsxRuntime.jsx("line", { x1: "1", y1: "1", x2: "23", y2: "23" })] })),
-    // Actions & Controls
-    MoreVert: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" }) })),
-    Settings: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" }) })),
-    // Loading
-    Refresh: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" }) })),
-    // Navigation
-    Home: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" }) })),
-    Dashboard: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" }) })),
-    Analytics: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" }) })),
-    // File & Folder
-    Folder: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" }) })),
-    Description: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" }) })),
-    // User & Authentication
-    Person: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" }) })),
-    Lock: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM15.1 8H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z" }) })),
-    LockOpen: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z" }) })),
-    // Status & Alerts
-    Error: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" }) })),
-    Warning: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" }) })),
-    Info: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" }) })),
-    Success: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" }) })),
-    // Input specific icons
-    Phone: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" }) })),
-    Calendar: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" }) })),
-    LocationOn: ({ className, size = 24, style }) => (jsxRuntime.jsx("svg", { className: className, style: { width: size, height: size, ...style }, viewBox: "0 0 24 24", fill: "currentColor", children: jsxRuntime.jsx("path", { d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" }) })),
-};
-// Export individual icons for easier importing
-const { Add, Remove, Close, Check, ChevronRight, ChevronLeft, ExpandMore, ExpandLess, Download, Upload, Search, Email, Visibility, VisibilityOff, MoreVert, Settings, Refresh, Home, Dashboard, Analytics, Folder, Description, Person, Lock, LockOpen, Error, Warning, Info, Success, Phone, Calendar, LocationOn, } = MaterialSymbols;
-
 exports.Add = Add;
 exports.Analytics = Analytics;
 exports.Button = Button;
@@ -533,6 +588,7 @@ exports.Check = Check;
 exports.Checkbox = Checkbox;
 exports.ChevronLeft = ChevronLeft;
 exports.ChevronRight = ChevronRight;
+exports.Chip = Chip;
 exports.Close = Close;
 exports.Dashboard = Dashboard;
 exports.Description = Description;
